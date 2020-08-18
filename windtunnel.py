@@ -134,7 +134,7 @@ class Client(asyncore.dispatcher):
             self.log.debug('Received message: %s', message)
             self.log.debug('Repeating message to %s', self.repeater_port)
             repeater_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-            repeater_sock.sendto(message, ('127.0.0.1', self.repeater_port))
+            repeater_sock.sendto(message, ('windreceiver', self.repeater_port))
             repeater_sock.close()
 
     def handle_close(self):

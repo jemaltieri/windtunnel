@@ -14,7 +14,7 @@ See additional arguments below
 ### Client mode
 ```
 docker pull jaltieri/windtunnel
-docker run --network=host --add-host=windreceiver:$(ipconfig getifaddr en0) --rm -it jaltieri/windtunnel client localhost
+docker run --network=host --add-host=windreceiver:$(ipconfig getifaddr en0) jaltieri/windtunnel client localhost
 ```
 See additional arguments below
 

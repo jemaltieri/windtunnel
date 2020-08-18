@@ -70,10 +70,11 @@ class Host(asyncore.dispatcher):
         self.remote_clients.pop(addr, 'None')
 
     def receive_wind(self, wind_datagram):
-        self.log.debug('broadcasting wind datagram: %s', wind_datagram)
-        for remote_addr, remote_client in self.remote_clients.items():
-            self.log.debug("sending to: %s", remote_addr)
-            remote_client.send_wind(wind_datagram)
+        if self.remote_clients:
+            self.log.debug('broadcasting wind datagram: %s', wind_datagram)
+            for remote_addr, remote_client in self.remote_clients.items():
+                self.log.debug("sending to: %s", remote_addr)
+                remote_client.send_wind(wind_datagram)
 
 
 class WindListener(asyncore.dispatcher):
